@@ -48,12 +48,12 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
 <!--        tools:layout="@layout/fragment_banner"></fragment>-->
-<!--     <fragment-->
-<!--        android:id="@+id/fragment_bai_hat_hot"-->
-<!--        class="com.google.dunggiaobt.Fragment.Fragment_Bai_Hat_Hot"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        tools:layout="@layout/fragment_banner"></fragment>-->
+     <fragment
+        android:id="@+id/fragment_bai_hat_hot"
+        class="com.google.dunggiaobt.Fragment.Fragment_Bai_Hat_Hot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_banner"></fragment>
 <!--    &lt;!&ndash;Vuend&ndash;&gt;-->
 
 </LinearLayout>
