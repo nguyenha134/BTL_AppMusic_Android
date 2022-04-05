@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/linearcarviewalbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageviewalbum"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/txttenalbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:ellipsize="end"
+            android:maxWidth="200dp"
+            android:text="@string/nang_am_xa_dan"
+            android:textColor="#000000"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtviewtencasialbum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:ellipsize="end"
+            android:maxWidth="200dp"
+            android:maxLines="1"
+            android:text="@string/son_tung_mtp"
+            android:textColor="#9e9797"
+            android:textSize="15sp">
+
+        </TextView>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

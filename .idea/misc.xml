@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/drawable/custom_background_banner.xml" value="0.1" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/activity_danh_sach_tat_ca_album_t.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/activity_danhsachbaihat.xml" value="0.1" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/dong_bai_hat_hot.xml" value="0.2" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/dong_banner.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/dong_danh_sach_bai_hat.xml" value="0.1" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/dong_playlist.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_banner.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_playlist.xml" value="0.152" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_tab2.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_tab3.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_topic_and_category.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_trangchu.xml" value="0.1" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/listviewplaylist.xml" value="0.12360688956433637" />
+        <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/menu/menu_navigation.xml" value="0.1574074074074074" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/dong_album.xml" value="0.264" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/dong_banner.xml" value="0.16666666666666666" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_album_hot.xml" value="0.1" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_banner.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_tab2.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_tab3.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_trangchu.xml" value="0.264" />
+        <entry key="..\:/BTLAndroid_AppMusic11/app/src/main/res/layout/activity_danh_sach_tat_ca_album_t.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic11/app/src/main/res/layout/dong_all_album.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic11/app/src/main/res/layout/fragment_trangchu.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic12/app/src/main/res/layout/dong_album.xml" value="0.24635416666666668" />
+        <entry key="..\:/BTLAndroid_AppMusic12/app/src/main/res/layout/dong_all_album.xml" value="0.24635416666666668" />
+        <entry key="..\:/BTLAndroid_AppMusic12/app/src/main/res/layout/dong_banner.xml" value="0.24635416666666668" />
+        <entry key="..\:/BTLAndroid_AppMusic12/app/src/main/res/layout/dong_danh_sach_bai_hat.xml" value="0.24635416666666668" />
+        <entry key="..\:/BTLAndroid_AppMusic12/app/src/main/res/layout/fragment_album_hot.xml" value="0.24635416666666668" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/activity_danh_sach_tat_ca_album_t.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/activity_danhsachbaihat.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/activity_danhsachcacplaylist.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/dong_album.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/dong_all_album.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/dong_danh_sach_bai_hat.xml" value="0.23333333333333334" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/dong_playlist.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/fragment_album_hot.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/fragment_playlist.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/fragment_trangchu.xml" value="0.25" />
+        <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/listviewplaylist.xml" value="0.264" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/activity_danh_sach_tat_ca_album_t.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/activity_danhsachbaihat.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/dong_album.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/dong_all_album.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/dong_bai_hat_hot.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/dong_banner.xml" value="0.13043478260869565" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/dong_danh_sach_bai_hat.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/dong_playlist.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/fragment_album_hot.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/fragment_bai_hat_hot.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/fragment_banner.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/fragment_playlist.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/fragment_tab2.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/fragment_tab3.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/listviewplaylist.xml" value="0.1" />
+        <entry key="..\:/LapTrinh_Androi/BTLAndroid_AppMusic/app/src/main/res/layout/activity_danhsachbaihat.xml" value="0.184375" />
+        <entry key="..\:/LapTrinh_Androi/BTLAndroid_AppMusic/app/src/main/res/layout/dong_danh_sach_bai_hat.xml" value="0.184375" />
+        <entry key="..\:/Nam3_Ki2/Lap_Trinh_Di_Dong/dunggiaobt/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Nam3_Ki2/Lap_Trinh_Di_Dong/dunggiaobt/app/src/main/res/layout/fragment_tab1.xml" value="0.25" />
+        <entry key="..\:/Nam3_Ki2/Lap_Trinh_Di_Dong/dunggiaobt/app/src/main/res/layout/fragment_tab2.xml" value="0.12777777777777777" />
+        <entry key="..\:/Nam3_Ki2/Lap_Trinh_Di_Dong/dunggiaobt/app/src/main/res/layout/fragment_tab3.xml" value="0.12777777777777777" />
+        <entry key="..\:/Nam3_Ki2/Lap_Trinh_Di_Dong/dunggiaobt/app/src/main/res/menu/menu_navigation.xml" value="0.2" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/drawable/custom_background_banner.xml" value="0.165" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/dong_banner.xml" value="0.25" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_banner.xml" value="0.22" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_tab1.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_tab2.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_tab3.xml" value="0.209375" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_trangchu.xml" value="0.1" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/menu/menu_navigation.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/dong_banner.xml" value="0.125" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_banner.xml" value="0.209375" />
+        <entry key="..\:/Users/admin/Desktop/dunggiaobt/dunggiaobt-20220325T080454Z-001/dunggiaobt/app/src/main/res/layout/fragment_trangchu.xml" value="0.209375" />
+        <entry key="..\:/dunggiaobt11/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

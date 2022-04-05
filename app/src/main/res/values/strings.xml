@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">dunggiaobt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="xem_th_m">Xem Thêm</string>
+    <string name="ch_v_th_lo_i">CHỦ ĐỀ VÀ THỂ LOẠI</string>
+    <string name="todo">TODO</string>
+    <string name="nang_am_xa_dan">Nắng ấm xa dần</string>
+    <string name="son_tung_mtp">Sơn Tùng MTP</string>
+    <string name="album_hay_nhat_viet_vd">Album Hay Nhất Viet vd</string>
+    <string name="ten_bai_hat">Tên Bài Hát</string>
+    <string name="ca_si">Ca Sĩ</string>
+    <string name="lo_yeu_mat_roi">Lỡ yêu mất rồi</string>
+    <string name="ch_o_c_c_b_n_n_v_i_ca_kh_c_m_i_c_a_ca_s_m_i_nh_t_hi_n_nay">Chào các bạn đến với ca khúc mới của ca sĩ mới nhất hiện nay</string>
+    <string name="nhung_bai_hit_cu">Những bài Hit cũ</string>
+    <string name="album_hot">ALBUM HOT</string>
+    <string name="c_th_b_n_th_ch">Có thể bạn thích</string>
+    <string name="nh_p_i_u_c_m_x_c">Nhịp Điệu Cảm Xúc</string>
+    <string name="xem_th_m_playlist">Xem Thêm Playlist</string>
+    <string name="tab_2">Tab 2</string>
+    <string name="tab_3">Tab 3</string>
+    <string name="_1">1</string>
+</resources>
