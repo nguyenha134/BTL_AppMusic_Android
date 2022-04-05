@@ -1,9 +1,12 @@
 package com.google.dunggiaobt.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 //vu
-public class BaiHat {
+public class BaiHat implements Parcelable {
     @SerializedName("IdBaiHat")
     @Expose
     private String idbaihat;
@@ -23,6 +26,27 @@ public class BaiHat {
     @SerializedName("Luotthich")
     @Expose
     private String luotthich;
+
+    protected BaiHat(Parcel in) {
+        idbaihat = in.readString();
+        tenbaihat = in.readString();
+        Hinhbaihat = in.readString();
+        casi = in.readString();
+        linkbaihat = in.readString();
+        luotthich = in.readString();
+    }
+
+    public static final Creator<BaiHat> CREATOR = new Creator<BaiHat>() {
+        @Override
+        public BaiHat createFromParcel(Parcel in) {
+            return new BaiHat(in);
+        }
+
+        @Override
+        public BaiHat[] newArray(int size) {
+            return new BaiHat[size];
+        }
+    };
 
     public String getHinhbaihat() {
         return Hinhbaihat;
@@ -70,5 +94,20 @@ public class BaiHat {
 
     public void setTenbaihat(String tenbaihat) {
         this.tenbaihat = tenbaihat;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(idbaihat);
+        parcel.writeString(tenbaihat);
+        parcel.writeString(Hinhbaihat);
+        parcel.writeString(casi);
+        parcel.writeString(linkbaihat);
+        parcel.writeString(luotthich);
     }
 }

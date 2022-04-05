@@ -1,6 +1,9 @@
 package com.google.dunggiaobt.Adapter;
 
+import static com.google.dunggiaobt.Adapter.BaihathotAdapter.baiHatArrayList;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.dunggiaobt.Acrivity.PlayNhacActivity;
 import com.google.dunggiaobt.Model.BaiHat;
 import com.google.dunggiaobt.R;
 
@@ -55,6 +59,14 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
             txtindex =itemView.findViewById(R.id.textviewdanhsachindex);
             txttenbaihat =itemView.findViewById(R.id.textviewtenbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(context, PlayNhacActivity.class);
+                    intent.putExtra("cakhuc",mangbaihat.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

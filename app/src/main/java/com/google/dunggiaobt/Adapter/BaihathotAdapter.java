@@ -1,6 +1,7 @@
 package com.google.dunggiaobt.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.dunggiaobt.Acrivity.PlayNhacActivity;
 import com.google.dunggiaobt.Model.BaiHat;
 import com.google.dunggiaobt.R;
 import com.squareup.picasso.Picasso;
@@ -18,8 +20,8 @@ import java.util.ArrayList;
 
 //vu
 public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.ViewHolder>{
-    Context context;
-    ArrayList<BaiHat> baiHatArrayList;
+    static Context context;
+    static ArrayList<BaiHat> baiHatArrayList;
 
     public BaihathotAdapter(Context context,ArrayList<BaiHat> baiHatArrayList){
         this.context =context;
@@ -56,6 +58,14 @@ public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.View
             txtCasi =itemView.findViewById(R.id.texviewcasibaihathot);
             imgHinh = itemView.findViewById(R.id.imageviewBaihathot);
             imgLuotthich =itemView.findViewById(R.id.imageviewluotthich);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(context, PlayNhacActivity.class);
+                    intent.putExtra("cakhuc",baiHatArrayList.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
