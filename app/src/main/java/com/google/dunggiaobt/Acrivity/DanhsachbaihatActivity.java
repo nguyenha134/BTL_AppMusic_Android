@@ -1,29 +1,28 @@
 package com.google.dunggiaobt.Acrivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.dunggiaobt.Adapter.DanhsachbaihatAdapter;
 import com.google.dunggiaobt.Model.Album;
 import com.google.dunggiaobt.Model.BaiHat;
+import com.google.dunggiaobt.Model.Category;
 import com.google.dunggiaobt.Model.Playlist;
 import com.google.dunggiaobt.Model.Quangcao;
 import com.google.dunggiaobt.R;
@@ -36,6 +35,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +53,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     ArrayList<BaiHat> mangbaihat;
     DanhsachbaihatAdapter danhsachbaihatAdapter;
     Playlist playlist;
+    Category category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,13 +87,8 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     private  void init(){
         //Ha
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> finish());
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         //end ha
@@ -114,6 +110,31 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
 
         floatingActionButton.setEnabled(false);
 
+        if(category!=null && !category.getTenTheLoai().equals("")){
+            Toast.makeText(this, category.getIdTheLoai(), Toast.LENGTH_SHORT).show();
+            SetValueInView(category.getTenTheLoai(), category.getHinhTheLoai());
+            GetDataCategory(category.getIdTheLoai());
+        }
+
+    }
+
+    private void GetDataCategory(String idCategory){
+        Dataservice dataService = APIService.getService();
+        Call<List<BaiHat>> callback = dataService.GetListOfSongsByTheme(idCategory);
+        callback.enqueue(new Callback<List<BaiHat>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<BaiHat>> call, @NonNull Response<List<BaiHat>> response) {
+                mangbaihat = (ArrayList<BaiHat>) response.body();
+                danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this,mangbaihat);
+                recyclerViewdanhsachbaihat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
+                recyclerViewdanhsachbaihat.setAdapter(danhsachbaihatAdapter);
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<BaiHat>> call, @NonNull Throwable t) {
+                Toast.makeText(DanhsachbaihatActivity.this, "No Data", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     //truong
     private void GetDaTaAlbum(String idAlbum) {
@@ -123,6 +144,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 mangbaihat=(ArrayList<BaiHat>) response.body();
+
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this,mangbaihat);
                 recyclerViewdanhsachbaihat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
                 recyclerViewdanhsachbaihat.setAdapter(danhsachbaihatAdapter);
@@ -130,7 +152,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<BaiHat>> call, Throwable t) {
-
+                Toast.makeText(DanhsachbaihatActivity.this, "No Data", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -142,7 +164,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 mangbaihat=(ArrayList<BaiHat>) response.body();
-                Toast.makeText(DanhsachbaihatActivity.this, mangbaihat.size()+" 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DanhsachbaihatActivity.this, (mangbaihat != null ? mangbaihat.size() : 0) +" 2", Toast.LENGTH_SHORT).show();
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this,mangbaihat);
                 recyclerViewdanhsachbaihat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
                 recyclerViewdanhsachbaihat.setAdapter(danhsachbaihatAdapter);
@@ -152,7 +174,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<BaiHat>> call, Throwable t) {
-
+                Toast.makeText(DanhsachbaihatActivity.this, "GG", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -164,11 +186,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(),bitmap);
             collapsingToolbarLayout.setBackground(bitmapDrawable);
-        }
-        catch (MalformedURLException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
         Picasso.with(this).load(hinh).into(imgDanhsachcakhuc);
@@ -194,6 +212,9 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
                 playlist = (Playlist) intent.getSerializableExtra("itemplaylist");
             }
             //end ha
+            if(intent.hasExtra("idCategory")){
+                category = (Category) intent.getSerializableExtra("idCategory");
+            }
             //truong
             if(intent.hasExtra("album"))
             {

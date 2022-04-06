@@ -35,12 +35,13 @@
         android:id="@+id/texviewcasibaihathot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-        <ImageView
-            android:src="@drawable/love"
-            android:id="@+id/imageviewluotthich"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imageviewluotthich"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="false"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/love" />
 </RelativeLayout>

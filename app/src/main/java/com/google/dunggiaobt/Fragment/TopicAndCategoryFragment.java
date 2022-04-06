@@ -3,6 +3,7 @@ package com.google.dunggiaobt.Fragment;
 
 import static android.widget.ImageView.ScaleType.FIT_XY;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.google.dunggiaobt.Acrivity.DanhsachbaihatActivity;
+import com.google.dunggiaobt.Acrivity.ListOfAllTopicsActivity;
 import com.google.dunggiaobt.Model.Category;
 import com.google.dunggiaobt.Model.Topic;
 import com.google.dunggiaobt.Model.TopicAndCategory;
@@ -41,10 +44,15 @@ public class TopicAndCategoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.fragment_topic_and_category, container, false);
+        view = inflater.inflate(R.layout.fragment_topic_and_category, container, false);
         hScrollView = view.findViewById(R.id.horizontalScrollView);
         txtMore = view.findViewById(R.id.textViewMore);
         getData();
+        txtMore.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), ListOfAllTopicsActivity.class);
+            startActivity(intent);
+        });
+
         return view;
     }
 
@@ -88,7 +96,14 @@ public class TopicAndCategoryFragment extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int pos = i;
+                    imageView.setOnClickListener(view -> {
+                        Intent intent = new Intent(getActivity(), DanhsachbaihatActivity.class);
+                        intent.putExtra("idCategory", categoryArrayList.get(pos));
+                        startActivity(intent);
+                    });
                 }
+
 
                 hScrollView.addView(linearLayout);
             }

@@ -4,6 +4,7 @@ import com.google.dunggiaobt.Model.Album;
 import com.google.dunggiaobt.Model.BaiHat;
 import com.google.dunggiaobt.Model.Playlist;
 import com.google.dunggiaobt.Model.Quangcao;
+import com.google.dunggiaobt.Model.Topic;
 import com.google.dunggiaobt.Model.TopicAndCategory;
 
 import java.util.List;
@@ -35,7 +36,14 @@ public interface Dataservice {
     //Cong
     @GET("TopicAndCategory.php")
     Call<TopicAndCategory> GetTopicAndCategory();
-    
+
+    @FormUrlEncoded
+    @POST("congtruong.php")
+    Call<List<BaiHat>> GetListOfSongsByTheme(@Field("idCategory") String idCategory);
+
+    @GET("AllTopics.php")
+    Call<List<Topic>> GetAllTopics();
+
     //Ha
     @FormUrlEncoded
     @POST("danhsachcacbaihat.php")
