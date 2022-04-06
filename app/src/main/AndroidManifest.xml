@@ -25,6 +25,12 @@
             android:name=".Acrivity.DanhSachTatCaAlbum_T"
             android:exported="false" />
         <activity
+            android:name=".Acrivity.ListOfCategoriesForTopicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Acrivity.ListOfAllTopicsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Acrivity.MainActivity"
             android:exported="true">
             <intent-filter>
