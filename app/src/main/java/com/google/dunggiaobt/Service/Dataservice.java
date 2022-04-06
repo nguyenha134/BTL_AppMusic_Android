@@ -2,6 +2,7 @@ package com.google.dunggiaobt.Service;
 
 import com.google.dunggiaobt.Model.Album;
 import com.google.dunggiaobt.Model.BaiHat;
+import com.google.dunggiaobt.Model.Category;
 import com.google.dunggiaobt.Model.Playlist;
 import com.google.dunggiaobt.Model.Quangcao;
 import com.google.dunggiaobt.Model.Topic;
@@ -44,6 +45,10 @@ public interface Dataservice {
     @GET("AllTopics.php")
     Call<List<Topic>> GetAllTopics();
 
+    @FormUrlEncoded
+    @POST("CategoryForTopic.php")
+    Call<List<Category>> GetCategoriesForTopic(@Field("idTopic") String idTopic);
+
     //Ha
     @FormUrlEncoded
     @POST("danhsachcacbaihat.php")
@@ -53,7 +58,7 @@ public interface Dataservice {
     Call<List<Playlist>> GetDanhsachcacPlaylist();
     //begin truong
     @FormUrlEncoded
-    @POST("danhsachcacbaihat.php")
+    @POST("congtruong.php")
     Call<List<BaiHat>> GetDanhsachbaihattheoalbum(@Field("idalbum") String idalbum);
     //end truong
 
