@@ -20,7 +20,7 @@ public class BaiHat implements Parcelable {
     @SerializedName("Casi")
     @Expose
     private String casi;
-    @SerializedName("LinkBaiHat")
+    @SerializedName("Linkbaihat")
     @Expose
     private String linkbaihat;
     @SerializedName("Luotthich")
