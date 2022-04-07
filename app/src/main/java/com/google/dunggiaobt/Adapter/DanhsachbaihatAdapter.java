@@ -65,6 +65,27 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
                     Intent intent=new Intent(context, PlayNhacActivity.class);
                     intent.putExtra("cakhuc",mangbaihat.get(getPosition()));
                     context.startActivity(intent);
+                    imgluotthich.setImageResource(R.drawable.iconloved);
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("1",mangbaihat.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String ketqua = response.body();
+                            if(ketqua.equals("Success")){
+                                Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                    imgluotthich.setEnabled(false);
                 }
             });
         }
