@@ -64,6 +64,26 @@ public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.View
                     Intent intent=new Intent(context, PlayNhacActivity.class);
                     intent.putExtra("cakhuc",baiHatArrayList.get(getPosition()));
                     context.startActivity(intent);
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("1",baiHatArrayList.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String ketqua = response.body();
+                            if(ketqua.equals("Success")){
+                                Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                    imgLuotthich.setEnabled(false);
                 }
             });
         }
