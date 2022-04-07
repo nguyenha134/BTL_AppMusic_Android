@@ -41,8 +41,25 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
         setContentView(R.layout.activity_play_nhac);
         getData();
         init();
-      //  getData();
+        evenClick();
 
+    }
+
+    private void evenClick() {
+        imgplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mediaPlayer.isPlaying()){
+                    mediaPlayer.pause();
+                    imgplay.setImageResource(R.drawable.iconplay);
+
+                }else {
+                    mediaPlayer.start();
+                    imgplay.setImageResource(R.drawable.iconpause);
+
+                }
+            }
+        });
     }
 
     private void getData() {
@@ -52,7 +69,6 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
            if(intent.hasExtra("cakhuc"))
            {
                BaiHat baiHat=intent.getParcelableExtra("cakhuc");
-            //   Toast.makeText(this, baiHat.getTenbaihat(), Toast.LENGTH_SHORT).show();
                mangbaihat.add(baiHat);
 
            }
@@ -81,13 +97,16 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
         toolbarplaynhac.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 finish();
+                mediaPlayer.stop();
+                mangbaihat.clear();
             }
         });
         toolbarplaynhac.setTitleTextColor(Color.WHITE);
         if(mangbaihat.size()>0){
            new PlayMp3().execute(mangbaihat.get(0).getLinkbaihat());
-
+            imgplay.setImageResource(R.drawable.iconpause);
         }
     }
     class PlayMp3 extends AsyncTask<String ,Void,String>{
@@ -123,6 +142,8 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
 
     private void TimeSong() {
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("mm:ss");
+        txtTotaltimesong.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
+        sktime.setMax(mediaPlayer.getDuration());
 
     }
 }
