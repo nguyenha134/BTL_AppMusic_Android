@@ -43,5 +43,5 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="false"
         android:contentDescription="@string/todo"
-        android:src="@drawable/love" />
+        android:src="@drawable/iconlove" />
 </RelativeLayout>
