@@ -17,8 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.dunggiaobt.Acrivity.PlayNhacActivity;
 import com.google.dunggiaobt.Model.BaiHat;
 import com.google.dunggiaobt.R;
+import com.google.dunggiaobt.Service.APIService;
+import com.google.dunggiaobt.Service.Dataservice;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAdapter.ViewHolder>{
     Context context;
@@ -59,7 +65,7 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
             txtindex =itemView.findViewById(R.id.textviewdanhsachindex);
             txttenbaihat =itemView.findViewById(R.id.textviewtenbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            imgluotthich.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent=new Intent(context, PlayNhacActivity.class);
