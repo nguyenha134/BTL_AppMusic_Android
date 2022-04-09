@@ -1,7 +1,5 @@
 package com.google.dunggiaobt.Adapter;
 
-import static com.google.dunggiaobt.Adapter.BaihathotAdapter.baiHatArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -65,19 +63,18 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
             txtindex =itemView.findViewById(R.id.textviewdanhsachindex);
             txttenbaihat =itemView.findViewById(R.id.textviewtenbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
-            imgluotthich.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(context, PlayNhacActivity.class);
-                    intent.putExtra("cakhuc",mangbaihat.get(getPosition()));
-                    context.startActivity(intent);
-                    imgluotthich.setImageResource(R.drawable.iconloved);
-                    Dataservice dataservice = APIService.getService();
-                    Call<String> callback = dataservice.updateluotthich("1",mangbaihat.get(getPosition()).getIdbaihat());
-                    callback.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            String ketqua = response.body();
+            imgluotthich.setOnClickListener(view -> {
+                Intent intent=new Intent(context, PlayNhacActivity.class);
+                intent.putExtra("cakhuc",mangbaihat.get(getPosition()));
+                context.startActivity(intent);
+                imgluotthich.setImageResource(R.drawable.iconloved);
+                Dataservice dataservice = APIService.getService();
+                Call<String> callback = dataservice.updateluotthich("1",mangbaihat.get(getPosition()).getIdbaihat());
+                callback.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                        String ketqua = response.body();
+                        if (ketqua != null) {
                             if(ketqua.equals("Success")){
                                 Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
                             }
@@ -85,15 +82,21 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
                                 Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
                             }
                         }
+                    }
 
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
+                    @Override
+                    public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
 
-                        }
-                    });
-                    imgluotthich.setEnabled(false);
-                }
+                    }
+                });
+                imgluotthich.setEnabled(false);
             });
+
+           itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(context, PlayNhacActivity.class);
+                intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
+                context.startActivity(intent);
+           });
         }
     }
 }

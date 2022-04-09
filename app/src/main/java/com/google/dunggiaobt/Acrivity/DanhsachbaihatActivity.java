@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.View;
+import android.os.StrictMode;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,7 +31,6 @@ import com.google.dunggiaobt.Service.Dataservice;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +57,8 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danhsachbaihat);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         DataIntent();
         anhxa();
         init();
@@ -128,6 +129,7 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
                 danhsachbaihatAdapter = new DanhsachbaihatAdapter(DanhsachbaihatActivity.this,mangbaihat);
                 recyclerViewdanhsachbaihat.setLayoutManager(new LinearLayoutManager(DanhsachbaihatActivity.this));
                 recyclerViewdanhsachbaihat.setAdapter(danhsachbaihatAdapter);
+                evenclick();
             }
 
             @Override
@@ -226,13 +228,12 @@ public class DanhsachbaihatActivity extends AppCompatActivity {
     private  void  evenclick()
     {
         floatingActionButton.setEnabled(true);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(DanhsachbaihatActivity.this, PlayNhacActivity.class);
-                intent.putExtra("cacbaihat",mangbaihat);
-                startActivity(intent);
-            }
+        floatingActionButton.setOnClickListener(view -> {
+            Intent intent=new Intent(DanhsachbaihatActivity.this, PlayNhacActivity.class);
+            intent.putExtra("cacbaihat",mangbaihat);
+            startActivity(intent);
         });
     }
+
+
 }

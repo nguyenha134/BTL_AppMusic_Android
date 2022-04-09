@@ -1,29 +1,31 @@
 package com.google.dunggiaobt.Acrivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
+import android.os.Handler;
+import android.os.StrictMode;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.dunggiaobt.Adapter.ViewPagerPlayListNhacAdapter;
+import com.google.dunggiaobt.Fragment.Fragment_Dia_Nhac;
+import com.google.dunggiaobt.Fragment.Fragment_Play_Danh_Sach_Cac_Bai_Hat;
 import com.google.dunggiaobt.Model.BaiHat;
 import com.google.dunggiaobt.R;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PlayNhacActivity extends AppCompatActivity {
 
@@ -34,11 +36,16 @@ ImageButton imgplay,imgrepeat,imgnext,imgpre,imgrandom;
 ViewPager viewPagerplaynhac;
 
 public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
+public static ViewPagerPlayListNhacAdapter nhacAdapter;
+Fragment_Dia_Nhac fragmentDiaNhac;
+Fragment_Play_Danh_Sach_Cac_Bai_Hat fragmentPlayDanhSachCacBaiHat;
     MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_nhac);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         getData();
         init();
         evenClick();
@@ -46,18 +53,31 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
     }
 
     private void evenClick() {
-        imgplay.setOnClickListener(new View.OnClickListener() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable(){
+
             @Override
-            public void onClick(View view) {
-                if(mediaPlayer.isPlaying()){
-                    mediaPlayer.pause();
-                    imgplay.setImageResource(R.drawable.iconplay);
-
-                }else {
-                    mediaPlayer.start();
-                    imgplay.setImageResource(R.drawable.iconpause);
-
+            public void run() {
+                nhacAdapter.getItem(1);
+                if (mangbaihat.size() > 0){
+                    fragmentDiaNhac.PlayNhac(mangbaihat.get(0).getHinhbaihat());
+                    handler.removeCallbacks(this);
+                }else{
+                    handler.postDelayed(this, 300);
                 }
+            }
+        }, 500);
+
+        imgplay.setOnClickListener(view -> {
+            if(mediaPlayer.isPlaying()){
+                mediaPlayer.pause();
+                imgplay.setImageResource(R.drawable.iconplay);
+                Fragment_Dia_Nhac.animation.pause();
+
+            }else {
+                mediaPlayer.start();
+                imgplay.setImageResource(R.drawable.iconpause);
+                Fragment_Dia_Nhac.animation.resume();
             }
         });
     }
@@ -74,8 +94,7 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
            }
            if(intent.hasExtra("cacbaihat"))
            {
-               ArrayList<BaiHat> baihatList=intent.getParcelableArrayListExtra("cacbaihat");
-               mangbaihat=baihatList;
+               mangbaihat= intent.getParcelableArrayListExtra("cacbaihat");
            }
 
        }
@@ -92,20 +111,26 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
         imgrandom=findViewById(R.id.imagebuttonsuffle);
         imgpre=findViewById(R.id.imagebuttonpre);
         viewPagerplaynhac=findViewById(R.id.viewpagerplaynhac);
-      //  setSupportActionBar(toolbarplaynhac);
-       // getActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbarplaynhac.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                finish();
-                mediaPlayer.stop();
-                mangbaihat.clear();
-            }
+        setSupportActionBar(toolbarplaynhac);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        toolbarplaynhac.setNavigationOnClickListener(view -> {
+            finish();
+            mediaPlayer.stop();
+            mangbaihat.clear();
         });
         toolbarplaynhac.setTitleTextColor(Color.WHITE);
+
+        fragmentDiaNhac = new Fragment_Dia_Nhac();
+        fragmentPlayDanhSachCacBaiHat = new Fragment_Play_Danh_Sach_Cac_Bai_Hat();
+        nhacAdapter = new ViewPagerPlayListNhacAdapter(getSupportFragmentManager());
+        nhacAdapter.addFragment(fragmentPlayDanhSachCacBaiHat);
+        nhacAdapter.addFragment(fragmentDiaNhac);
+        viewPagerplaynhac.setAdapter(nhacAdapter);
+
+        fragmentDiaNhac = (Fragment_Dia_Nhac) nhacAdapter.getItem(1);
         if(mangbaihat.size()>0){
-           new PlayMp3().execute(mangbaihat.get(0).getLinkbaihat());
+            Objects.requireNonNull(getSupportActionBar()).setTitle(mangbaihat.get(0).getTenbaihat());
+            new PlayMp3().execute(mangbaihat.get(0).getLinkbaihat());
             imgplay.setImageResource(R.drawable.iconpause);
         }
     }
@@ -122,17 +147,14 @@ public static ArrayList<BaiHat> mangbaihat=new ArrayList<>();
             try {
                 mediaPlayer =new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.stop();
-                        mediaPlayer.reset();
-                    }
+                mediaPlayer.setOnCompletionListener(mediaPlayer -> {
+                    mediaPlayer.stop();
+                    mediaPlayer.reset();
                 });
                 mediaPlayer.setDataSource(baihat);
                 mediaPlayer.prepare();
-            }catch (Exception e){
-
+            }catch (IOException e){
+                e.printStackTrace();
             }
             mediaPlayer.start();
             TimeSong();
