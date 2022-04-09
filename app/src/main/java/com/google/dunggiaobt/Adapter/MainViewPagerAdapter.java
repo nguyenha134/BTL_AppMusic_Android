@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.google.dunggiaobt.Fragment.TraChu_Fragment;
-import com.google.dunggiaobt.Fragment.Tab2Fragment;
+import com.google.dunggiaobt.Fragment.Fragment_Tim_Kiem;
 import com.google.dunggiaobt.Fragment.Tab3Fragment;
 
 public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -21,7 +21,7 @@ public class MainViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 1:
-                return new Tab2Fragment();
+                return new Fragment_Tim_Kiem();
             case 2:
                 return new Tab3Fragment();
             default:

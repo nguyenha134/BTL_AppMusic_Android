@@ -66,4 +66,9 @@ public interface Dataservice {
     Call<List<BaiHat>> GetDanhsachbaihattheoalbum(@Field("idalbum") String idalbum);
     //end truong
 
+    //Ha
+    @FormUrlEncoded
+    @POST("searchbaihat.php")
+    Call<List<BaiHat>> GetSearchBaiHat(@Field("tukhoa") String tukhoa);
+
 }
