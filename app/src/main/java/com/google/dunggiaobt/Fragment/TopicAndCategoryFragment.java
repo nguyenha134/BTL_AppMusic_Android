@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.dunggiaobt.Acrivity.DanhsachbaihatActivity;
 import com.google.dunggiaobt.Acrivity.ListOfAllTopicsActivity;
+import com.google.dunggiaobt.Acrivity.ListOfCategoriesForTopicActivity;
 import com.google.dunggiaobt.Model.Category;
 import com.google.dunggiaobt.Model.Topic;
 import com.google.dunggiaobt.Model.TopicAndCategory;
@@ -83,6 +84,12 @@ public class TopicAndCategoryFragment extends Fragment {
                     cardView.setLayoutParams(layoutParams);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int pos = i;
+                    imageView.setOnClickListener(view -> {
+                        Intent intent = new Intent(getActivity(), ListOfCategoriesForTopicActivity.class);
+                        intent.putExtra("topic", topicArrayList.get(pos));
+                        startActivity(intent);
+                    });
                 }
 
                 for (int i = 0; i < categoryArrayList.size(); i++) {

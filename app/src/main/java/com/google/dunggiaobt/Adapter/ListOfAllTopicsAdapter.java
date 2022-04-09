@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.dunggiaobt.Acrivity.ListOfAllTopicsActivity;
 import com.google.dunggiaobt.Acrivity.ListOfCategoriesForTopicActivity;
 import com.google.dunggiaobt.Model.Topic;
 import com.google.dunggiaobt.R;

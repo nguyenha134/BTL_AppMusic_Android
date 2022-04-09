@@ -1,6 +1,7 @@
 package com.google.dunggiaobt.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.dunggiaobt.Acrivity.DanhsachbaihatActivity;
 import com.google.dunggiaobt.Model.Category;
 import com.google.dunggiaobt.R;
 import com.squareup.picasso.Picasso;
@@ -53,7 +55,11 @@ public class ListOfCategoryForTopicAdapter extends RecyclerView.Adapter<ListOfCa
             super(itemView);
             imageView = itemView.findViewById(R.id.imageViewCategoriesForTopic);
             txtCategoryName = itemView.findViewById(R.id.textViewCategoriesForTopic);
-
+            itemView.setOnClickListener(view ->{
+                Intent intent = new Intent(context, DanhsachbaihatActivity.class);
+                intent.putExtra("idCategory", categoryArrayList.get(getPosition()));
+                context.startActivity(intent);
+            } );
         }
     }
 }

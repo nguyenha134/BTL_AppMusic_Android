@@ -16,6 +16,7 @@ import com.google.dunggiaobt.Service.Dataservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,10 +58,8 @@ public class ListOfAllTopicsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewAllTopics);
         toolbar = findViewById(R.id.toolbarAllTopics);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Tất Cả Chủ Đề");
-        toolbar.setNavigationOnClickListener(view -> {
-            finish();
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 }

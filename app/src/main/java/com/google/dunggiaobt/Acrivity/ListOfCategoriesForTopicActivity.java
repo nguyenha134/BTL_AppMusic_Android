@@ -2,8 +2,6 @@ package com.google.dunggiaobt.Acrivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,7 +53,6 @@ public class ListOfCategoriesForTopicActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<List<Category>> call, @NonNull Throwable t) {
-                Toast.makeText(ListOfCategoriesForTopicActivity.this, "Deo chay dc", Toast.LENGTH_SHORT).show();
             }
         });
     }

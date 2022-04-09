@@ -9,7 +9,8 @@
         android:id="@+id/imageViewLinesAllTopics"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo">
 
     </ImageView>
 </RelativeLayout>
