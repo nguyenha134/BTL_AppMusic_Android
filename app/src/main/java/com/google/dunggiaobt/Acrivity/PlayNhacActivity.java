@@ -163,6 +163,7 @@ Fragment_Play_Danh_Sach_Cac_Bai_Hat fragmentPlayDanhSachCacBaiHat;
                     new PlayMp3().execute(mangbaihat.get(position).getLinkbaihat());
                     fragmentDiaNhac.PlayNhac(mangbaihat.get(position).getHinhbaihat());
                     Objects.requireNonNull(getSupportActionBar()).setTitle(mangbaihat.get(position).getTenbaihat());
+                    updateTime();
                 }
                 imgpre.setClickable(false);
                 imgnext.setClickable(false);
@@ -201,6 +202,7 @@ Fragment_Play_Danh_Sach_Cac_Bai_Hat fragmentPlayDanhSachCacBaiHat;
                     new PlayMp3().execute(mangbaihat.get(position).getLinkbaihat());
                     fragmentDiaNhac.PlayNhac(mangbaihat.get(position).getHinhbaihat());
                     Objects.requireNonNull(getSupportActionBar()).setTitle(mangbaihat.get(position).getTenbaihat());
+                    updateTime();
                 }
                 imgpre.setClickable(false);
                 imgnext.setClickable(false);
@@ -289,7 +291,7 @@ Fragment_Play_Danh_Sach_Cac_Bai_Hat fragmentPlayDanhSachCacBaiHat;
             }
             mediaPlayer.start();
             TimeSong();
-
+            updateTime();
         }
     }
 
@@ -299,4 +301,74 @@ Fragment_Play_Danh_Sach_Cac_Bai_Hat fragmentPlayDanhSachCacBaiHat;
         sktime.setMax(mediaPlayer.getDuration());
 
     }
+
+    private void updateTime(){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                if(mediaPlayer != null){
+                    sktime.setProgress(mediaPlayer.getCurrentPosition());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+                    txtTimeSong.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
+                    handler.postDelayed(this, 300);
+                    mediaPlayer.setOnCompletionListener(mediaPlayer -> {
+                        next = true;
+                        try{
+                            Thread.sleep(1000);
+                        }
+                        catch (InterruptedException ex){
+                            ex.printStackTrace();
+                        }
+                    });
+                }
+            }
+        }, 300);
+
+        Handler handler1 = new Handler();
+        handler1.postDelayed(new Runnable(){
+
+            @Override
+            public void run() {
+                if (next){
+                    if (position < (mangbaihat.size())){
+                        imgplay.setImageResource(R.drawable.iconpause);
+                        position++;
+                        if(repeat){
+                            if (position == 0){
+                                position = mangbaihat.size();
+                            }
+                            position -= 1;
+                        }
+                        if (random){
+                            Random random1 = new Random();
+                            int index = random1.nextInt(mangbaihat.size());
+                            if (index == position){
+                                position = index - 1;
+                            }
+                            position = index;
+                        }
+                        if (position > mangbaihat.size() - 1){
+                            position = 0;
+                        }
+                        new PlayMp3().execute(mangbaihat.get(position).getLinkbaihat());
+                        fragmentDiaNhac.PlayNhac(mangbaihat.get(position).getHinhbaihat());
+                        Objects.requireNonNull(getSupportActionBar()).setTitle(mangbaihat.get(position).getTenbaihat());
+                    }
+                    imgpre.setClickable(false);
+                    imgnext.setClickable(false);
+                    Handler handler1 = new Handler();
+                    handler1.postDelayed(() -> {
+                        imgpre.setClickable(true);
+                        imgnext.setClickable(true);
+                    }, 3000);
+                    next = false;
+                    handler1.removeCallbacks(this);
+                }else {
+                    handler1.postDelayed(this, 1000);
+                }
+            }
+        }, 1000);
+    }
+
 }
