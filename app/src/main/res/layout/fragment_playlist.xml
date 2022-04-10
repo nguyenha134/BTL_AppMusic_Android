@@ -17,7 +17,7 @@
         android:text="NHỊP ĐIỆU CẢM XÚC"
         android:textColor="#3e3b3b"
         android:textStyle="bold"
-        android:textSize="30sp" />
+        android:textSize="20dp" />
 
     <ListView
         android:id="@+id/listviewplaylist"

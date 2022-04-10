@@ -21,7 +21,10 @@
         <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/fragment_trangchu.xml" value="0.1" />
         <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/layout/listviewplaylist.xml" value="0.12360688956433637" />
         <entry key="..\:/Android/BTLAndroid_AppMusic/app/src/main/res/menu/menu_navigation.xml" value="0.1574074074074074" />
+        <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/dong_banner.xml" value="0.1" />
         <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/dong_search_bai_hat.xml" value="0.1" />
+        <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/fragment_playlist.xml" value="0.1" />
         <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/fragment_tab2.xml" value="0.1" />
         <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/fragment_tab3.xml" value="0.1" />
         <entry key="..\:/Android/chinh1/BTL_AppMusic_Android/app/src/main/res/layout/fragment_tim_kiem.xml" value="0.1" />
@@ -54,20 +57,13 @@
         <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/fragment_playlist.xml" value="0.25" />
         <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/fragment_trangchu.xml" value="0.25" />
         <entry key="..\:/BTLAndroid_AppMusic15/app/src/main/res/layout/listviewplaylist.xml" value="0.264" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/drawable/custom_background_play_nhac.xml" value="0.113" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/activity_list_of_all_topics.xml" value="0.1" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/activity_list_of_categories_for_topic.xml" value="0.13768115942028986" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/activity_play_nhac.xml" value="0.22083333333333333" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/dong_bai_hat_hot.xml" value="0.2" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/dong_danh_sach_bai_hat.xml" value="0.22083333333333333" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/dong_danh_sach_cac_playlist.xml" value="0.22083333333333333" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/dong_play_bai_hat.xml" value="0.1" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/dong_playlist.xml" value="0.22083333333333333" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/fragment_dia_nhac.xml" value="0.1" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/fragment_play_danh_sach_cac_bai_hat.xml" value="0.1" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/fragment_topic_and_category.xml" value="0.1" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/lines_all_topics.xml" value="0.1" />
-        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/lines_categories_for_topic.xml" value="0.1" />
+        <entry key="..\:/Documents/Documents/LapTrinhAndroid/BTL/app/src/main/res/layout/lines_categories_for_topic.xml" value="0.264" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/activity_danh_sach_tat_ca_album_t.xml" value="0.1" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/activity_danhsachbaihat.xml" value="0.1" />
         <entry key="..\:/Documents/Documents/LapTrinhAndroid/Code/BTL/app/src/main/res/layout/activity_main.xml" value="0.1" />

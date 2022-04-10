@@ -76,7 +76,7 @@ public class Fragment_PLaylist extends Fragment {
                 lvpLaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(getActivity(), DanhsachcacplaylistActivity.class);
+                        Intent intent = new Intent(getActivity(), DanhsachbaihatActivity.class);
                         intent.putExtra("itemplaylist", mangplaylist.get(i));
                         startActivity(intent);
                     }
