@@ -36,7 +36,7 @@ public class DanhSachTatCaAlbum_T extends AppCompatActivity {
 //
         setSupportActionBar(toolbarallalbum);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Tất Cả Chủ Đề");
+        getSupportActionBar().setTitle("Tất Cả Album");
         toolbarallalbum.setNavigationOnClickListener(view -> finish());
 
         GetData();
