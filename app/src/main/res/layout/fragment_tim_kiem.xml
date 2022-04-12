@@ -6,7 +6,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3e3ee2"
+        android:background="#B0C4DE"
         android:id="@+id/appbarlayoutsearchbaihat">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarsearchbaihat"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="#f20"
+        android:textColor="#fff"
         android:textSize="35sp"
         android:visibility="gone" />
 
