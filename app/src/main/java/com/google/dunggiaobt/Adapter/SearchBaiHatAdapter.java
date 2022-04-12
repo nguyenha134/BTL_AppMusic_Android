@@ -28,6 +28,7 @@ import retrofit2.Response;
 public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapter.ViewHolder> {
     Context context;
     ArrayList<BaiHat> mangbaihat;
+    ArrayList<String> loved = new ArrayList<>();
 
     public SearchBaiHatAdapter(Context context, ArrayList<BaiHat> mangbaihat) {
         this.context = context;
@@ -74,20 +75,34 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
 
                 }
             });
-            imgLuotThich.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    imgLuotThich.setImageResource(R.drawable.iconlove);
+            imgLuotThich.setOnClickListener(view -> {
+                //Intent intent=new Intent(context, PlayNhacActivity.class);
+                //intent.putExtra("cakhuc",baiHatArrayList.get(getPosition()));
+                //context.startActivity(intent);
+                boolean Isloved = false;
+//                Toast.makeText(context,loved.toString(),Toast.LENGTH_SHORT).show();
+                for (String i : loved) {
+                    if(i.contains(mangbaihat.get(getPosition()).getIdbaihat()))
+                    {
+                        Isloved = true;
+                        break;
+                    }
+                }
+
+                if(Isloved) {
                     Dataservice dataservice = APIService.getService();
-                    Call<String> callback = dataservice.updateluotthich("1", mangbaihat.get(getPosition()).getIdbaihat());
+                    Call<String> callback = dataservice.updateluotthich("-1",mangbaihat.get(getPosition()).getIdbaihat());
                     callback.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             String ketqua = response.body();
-                            if(ketqua.equals("success")){
-                                Toast.makeText(context, "Đã thích", Toast.LENGTH_SHORT).show();;
-                            }else{
-                                Toast.makeText(context, "Lỗi!", Toast.LENGTH_SHORT).show();;
+                            if(ketqua.equals("Success")){
+                                imgLuotThich.setImageResource(R.drawable.iconlove);
+                                loved.remove(mangbaihat.get(getPosition()).getIdbaihat());
+                                Toast.makeText(context,"Đã bỏ Thích",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -96,8 +111,32 @@ public class SearchBaiHatAdapter extends  RecyclerView.Adapter<SearchBaiHatAdapt
 
                         }
                     });
-                    imgLuotThich.setEnabled(false);
                 }
+                else {
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("1",mangbaihat.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String ketqua = response.body();
+                            if(ketqua.equals("Success")){
+                                imgLuotThich.setImageResource(R.drawable.iconloved);
+                                loved.add(mangbaihat.get(getPosition()).getIdbaihat());
+                                Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                }
+
+                //imgLuotthich.setEnabled(false);
             });
         }
 
