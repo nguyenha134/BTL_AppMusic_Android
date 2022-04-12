@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 //vu
 public class BaiHat implements Parcelable {
-    @SerializedName("IdBaihat")
+    @SerializedName("IdBaiHat")
     @Expose
     private String idbaihat;
     @SerializedName("Tenbaihat")
