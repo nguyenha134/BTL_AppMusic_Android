@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAdapter.ViewHolder>{
     Context context;
     ArrayList<BaiHat> mangbaihat;
+    static ArrayList<String> loved = new ArrayList<>();
     public DanhsachbaihatAdapter(Context context,ArrayList<BaiHat> mangbaihat){
         this.context=context;
         this.mangbaihat=mangbaihat;
@@ -42,10 +43,9 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BaiHat baihat =mangbaihat.get(position);
-
         holder.txtcasi.setText(baihat.getCasi());
-       holder.txttenbaihat.setText(baihat.getTenbaihat());
-       holder.txtindex.setText(position+1+"");
+        holder.txttenbaihat.setText(baihat.getTenbaihat());
+        holder.txtindex.setText(position+1+"");
 
     }
 
@@ -64,39 +64,80 @@ public class DanhsachbaihatAdapter extends RecyclerView.Adapter<DanhsachbaihatAd
             txttenbaihat =itemView.findViewById(R.id.textviewtenbaihat);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
             imgluotthich.setOnClickListener(view -> {
-                Intent intent=new Intent(context, PlayNhacActivity.class);
-                intent.putExtra("cakhuc",mangbaihat.get(getPosition()));
-                context.startActivity(intent);
-                imgluotthich.setImageResource(R.drawable.iconloved);
-                Dataservice dataservice = APIService.getService();
-                Call<String> callback = dataservice.updateluotthich("1",mangbaihat.get(getPosition()).getIdbaihat());
-                callback.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-                        String ketqua = response.body();
-                        if (ketqua != null) {
-                            if(ketqua.equals("Success")){
-                                Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+//                Intent intent=new Intent(context, PlayNhacActivity.class);
+//                intent.putExtra("cakhuc",mangbaihat.get(getPosition()));
+//                context.startActivity(intent);
+                boolean Isloved = false;
+                for (String i: loved) {
+                    if(mangbaihat.get(getPosition()).getIdbaihat().contains(i))
+                    {
+                        Isloved = true;
+                        break;
+                    }
+                }
+                if(Isloved)
+                {
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("-1",mangbaihat.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                            String ketqua = response.body();
+                            if (ketqua != null) {
+                                if(ketqua.equals("Success")){
+                                    imgluotthich.setImageResource(R.drawable.iconlove);
+                                    loved.remove(mangbaihat.get(getPosition()).getIdbaihat());
+                                    Toast.makeText(context,"Đã bỏ Thích",Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    ketqua =null;
+                                    Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
+                        @Override
+                        public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
 
-                    }
-                });
-                imgluotthich.setEnabled(false);
+                        }
+                    });
+                }
+                else
+                {
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("1",mangbaihat.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+                            String ketqua = response.body();
+                            if (ketqua != null) {
+                                if(ketqua.equals("Success")){
+                                    imgluotthich.setImageResource(R.drawable.iconloved);
+                                    loved.add(mangbaihat.get(getPosition()).getIdbaihat());
+                                    Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    ketqua =null;
+                                    Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<String> call, @NonNull Throwable t) {
+
+                        }
+                    });
+                }
+
+//                imgluotthich.setEnabled(false);
             });
 
-           itemView.setOnClickListener(view -> {
+            itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(context, PlayNhacActivity.class);
                 intent.putExtra("cakhuc", mangbaihat.get(getPosition()));
                 context.startActivity(intent);
-           });
+            });
         }
     }
 }
