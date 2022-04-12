@@ -29,6 +29,7 @@ import retrofit2.Response;
 public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.ViewHolder>{
     static Context context;
     static ArrayList<BaiHat> baiHatArrayList;
+    static ArrayList<String> loved = new ArrayList<>();
 
     public BaihathotAdapter(Context context,ArrayList<BaiHat> baiHatArrayList){
         this.context =context;
@@ -45,10 +46,10 @@ public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            BaiHat baiHat=baiHatArrayList.get(position);
-            holder.txtCasi.setText(baiHat.getCasi());
-            holder.txtTen.setText(baiHat.getTenbaihat());
-            Picasso.with(context).load(baiHat.getHinhbaihat()).into(holder.imgHinh);
+        BaiHat baiHat=baiHatArrayList.get(position);
+        holder.txtCasi.setText(baiHat.getCasi());
+        holder.txtTen.setText(baiHat.getTenbaihat());
+        Picasso.with(context).load(baiHat.getHinhbaihat()).into(holder.imgHinh);
     }
 
     @Override
@@ -68,30 +69,67 @@ public class BaihathotAdapter extends RecyclerView.Adapter<BaihathotAdapter.View
             imgHinh = itemView.findViewById(R.id.imageviewBaihathot);
             imgLuotthich =itemView.findViewById(R.id.imageviewluotthich);
             imgLuotthich.setOnClickListener(view -> {
-                Intent intent=new Intent(context, PlayNhacActivity.class);
-                intent.putExtra("cakhuc",baiHatArrayList.get(getPosition()));
-                context.startActivity(intent);
-                imgLuotthich.setImageResource(R.drawable.iconloved);
-                Dataservice dataservice = APIService.getService();
-                Call<String> callback = dataservice.updateluotthich("1",baiHatArrayList.get(getPosition()).getIdbaihat());
-                callback.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        String ketqua = response.body();
-                        if(ketqua.equals("Success")){
-                            Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
-                        }
+                //Intent intent=new Intent(context, PlayNhacActivity.class);
+                //intent.putExtra("cakhuc",baiHatArrayList.get(getPosition()));
+                //context.startActivity(intent);
+                boolean Isloved = false;
+//                Toast.makeText(context,loved.toString(),Toast.LENGTH_SHORT).show();
+                for (String i : loved) {
+                    if(i.contains(baiHatArrayList.get(getPosition()).getIdbaihat()))
+                    {
+                        Isloved = true;
+                        break;
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                if(Isloved) {
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("-1",baiHatArrayList.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String ketqua = response.body();
+                            if(ketqua.equals("Success")){
+                                imgLuotthich.setImageResource(R.drawable.iconlove);
+                                loved.remove(baiHatArrayList.get(getPosition()).getIdbaihat());
+                                Toast.makeText(context,"Đã bỏ Thích",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-                    }
-                });
-                imgLuotthich.setEnabled(false);
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                }
+                else {
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.updateluotthich("1",baiHatArrayList.get(getPosition()).getIdbaihat());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String ketqua = response.body();
+                            if(ketqua.equals("Success")){
+                                imgLuotthich.setImageResource(R.drawable.iconloved);
+                                loved.add(baiHatArrayList.get(getPosition()).getIdbaihat());
+                                Toast.makeText(context,"Đã Thích",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(context,"Lỗi !!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                }
+
+                //imgLuotthich.setEnabled(false);
             });
 
             itemView.setOnClickListener(view -> {
