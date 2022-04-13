@@ -87,6 +87,7 @@ public class Fragment_Tim_Kiem extends Fragment {
                 }else{
                     recyclerViewsSearchBaiHat.setVisibility(View.GONE);
                     txtkhongcodulieu.setVisibility(View.VISIBLE);
+
                 }
 
             }
